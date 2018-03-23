@@ -1,13 +1,15 @@
-.loader {
-  float: left;
-  width: 25%;
-}
 .mian {
   width: 100%;
   height: 13.34rem;
   padding-top: 1rem;
   position: relative;
   background: url("../img/背景.png");
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
 }
 div,
 p,
@@ -43,9 +45,6 @@ input {
   bottom: 0;
   left: 0;
 }
-.content #down {
-  left: 318px;
-}
 .content #graoup_wawa {
   position: absolute;
   bottom: 0.3rem;
@@ -56,13 +55,25 @@ input {
   background-size: 100%;
   z-index: 2;
 }
-#start {
+#start,
+#down {
+  position: absolute;
+  margin: 0 auto;
+  width: 3.2rem;
   text-align: center;
   padding: .6rem 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
-#start img {
+#start img,
+#down img {
   width: 1.9rem;
   height: 1.9rem;
+}
+#down .loader {
+  position: absolute;
+  left: 36px;
+  top: 63px;
 }
 #hualun {
   width: 0.74rem;

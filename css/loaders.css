@@ -510,8 +510,8 @@
     top: 0px;
     opacity: 0;
     margin: 0;
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     -webkit-animation: ball-scale-multiple 1s 0s linear infinite;
             animation: ball-scale-multiple 1s 0s linear infinite; }
 

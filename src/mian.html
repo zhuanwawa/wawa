@@ -28,10 +28,21 @@
         <!--娃娃-->
         <div id="graoup_wawa"></div>
       </div>
+      
         <div id="start">
-            <img src="../img/按钮-正常.png"/>
-            <span id="down">向下</span>
+            <img src="../img/star.png"/>
         </div>
+        <div id="down" class='hide'>
+            <img src="../img/down-pre.png"/>
+          <div class="loader">
+            <div class="loader-inner ball-scale-multiple hide">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      
         <!--<div id="down">向下</div>-->
     </div>
    
@@ -59,11 +70,15 @@
               },200);
           return set_time
       }
+//      开始
       $('#start').click(function () {
+          $(this).addClass('hide');
+          $('#down').find('img').eq(0).attr({'src':'../img/down-pre.png'});
+          $('#down').removeClass('hide');
           if(!X_flag){
               X_flag =true;
               count_timer();
-              $("#zhuzi").animate(css,1500,rowBack);
+              $("#zhuzi").animate(css,500,rowBack);
           }else {
               return '';
           }
@@ -75,14 +90,59 @@
               css.left='5.3rem';
           else if(css.left=='5.3rem')
               css.left='0.8rem';
-          console.log(css);
-          $('#zhuzi').animate(css,1500,rowBack);
+          $('#zhuzi').animate(css,500,rowBack);
       }
 //      向下
+     
+      $('#down').click(function () {
+//          按下动画
+          if( $('.ball-scale-multiple').hasClass('hide')){
+              $('.ball-scale-multiple').removeClass('hide');
+              setTimeout(function () {
+                  $('.ball-scale-multiple').addClass('hide');
+              },1000);
+          }
+          if(Y_flag){
+              return '';
+          }else {
+              Y_flag = true;
+              clearInterval(set_time);
+              $('#claw').css({
+                  'background':' 0 0 url("../img/爪子-正常.png") no-repeat',
+                  'background-size': '100%',
+              });
+//          重置
+              $('.wawa').attr({'class':'wawa'});
+              $('.wawa').css({
+                  width:0,
+                  height:0,
+                  top:0,
+                  left:0,
+                  'background-image':''
+              })
+              var flag = 0;
+              flag = Math.floor(timer/2000);
+//          最终返回x轴时间确定
+              if(flag%2 == 0){
+                  timer -=2000*flag;
+              }else {
+                  timer=2000*(flag+1) - timer;
+              }
+//          阻止x轴动画停止
+//              console.log(timer);
+              $("#zhuzi").stop();
+              $("#claw").animate(hTop,2000,colBack);
+              $("#line").animate({'height':'3.6rem'},2000,function () {
+                  $("#line").animate({'height':'0.6rem'},2000)
+              })
+          }
+          
+      });
       function colBack() {
           var _left = $("#zhuzi").position().left;
+          $('#down').find('img').eq(0).attr({'src':'../img/按钮-正常.png'});
           console.log(timer,_left);
-        var count = sheng_cheng(_left);
+          var count = sheng_cheng(_left);
 //        count=2;
 //        切换娃娃
           switch (count){
@@ -144,8 +204,12 @@
                       $('.wawa').addClass('animated mymove2');
                   }else if(count == 4){
                       $('.wawa').addClass('animated mymove3');
-                  }
+                  };
+                  $('#start').removeClass('hide');
+                  $('#down').addClass('hide');
+//                  按钮切换
                   setTimeout(function () {
+                      
                       $('.wawa').css({
                           width:0,
                           height:0,
@@ -154,49 +218,10 @@
                           'background-image':''
                       });
                   },2000);
-                  
+
               })
           })
       }
-      $('#down').click(function () {
-          $('#claw').css({
-              'background':' 0 0 url("../img/爪子-正常.png") no-repeat',
-              'background-size': '100%',
-          });
-//          重置
-          $('.wawa').attr({'class':'wawa'});
-          $('.wawa').css({
-              width:0,
-              height:0,
-              top:0,
-              left:0,
-              'background-image':''
-          })
-          
-          if(Y_flag){
-              return '';
-          }else {
-              Y_flag = true;
-              clearInterval(set_time);
-              var flag = 0;
-              flag = Math.floor(timer/3000);
-//          最终返回x轴时间确定
-              if(flag%2 == 0){
-                  timer -=3000*flag;
-              }else {
-                  timer=3000*(flag+1) - timer;
-              }
-//          阻止x轴动画停止
-              console.log(timer);
-              $("#zhuzi").stop();
-              console.log($("#zhuzi").position().top);
-              $("#claw").animate(hTop,2000,colBack)
-              $("#line").animate({'height':'3.6rem'},2000,function () {
-                  $("#line").animate({'height':'0.6rem'},2000)
-              })
-          }
-          
-      });
 //      娃娃概率
       function random0() {
           jieguo = 0;
