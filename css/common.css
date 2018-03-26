@@ -57,6 +57,7 @@ input {
 }
 #start,
 #down {
+  cursor: pointer;
   position: absolute;
   margin: 0 auto;
   width: 3.2rem;
