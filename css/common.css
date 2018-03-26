@@ -61,7 +61,7 @@ input {
   margin: 0 auto;
   width: 3.2rem;
   text-align: center;
-  padding: .6rem 0;
+  padding: 0;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -72,8 +72,8 @@ input {
 }
 #down .loader {
   position: absolute;
-  left: 36px;
-  top: 63px;
+  left: 0.76rem;
+  top: 0.7rem;
 }
 #hualun {
   width: 0.74rem;
@@ -113,7 +113,7 @@ input {
   -moz-background-size: 100% 100%;
 }
 .mymove {
-  animation: mymove 2s ;
+  animation: mymove 1s ;
   -webkit-animation-name: mymove;
   animation-name: mymove;
 }
@@ -154,7 +154,7 @@ input {
   }
 }
 .mymove1 {
-  animation: mymove1 2s ;
+  animation: mymove1 1s ;
   -webkit-animation-name: mymove1;
   animation-name: mymove1;
 }
@@ -195,7 +195,7 @@ input {
   }
 }
 .mymove2 {
-  animation: mymove2 2s ;
+  animation: mymove2 1s ;
   -webkit-animation-name: mymove2;
   animation-name: mymove2;
 }
@@ -236,7 +236,7 @@ input {
   }
 }
 .mymove3 {
-  animation: mymove3 2s ;
+  animation: mymove3 1s ;
   -webkit-animation-name: mymove3;
   animation-name: mymove3;
 }
